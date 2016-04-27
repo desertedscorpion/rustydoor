@@ -2,7 +2,7 @@ FROM taf7lwappqystqp4u7wjsqkdc7dquw/heavytombstone
 USER root
 VOLUME /var/private
 ENV GIT_EMAIL="emory.merryman@gmail.com" GIT_NAME="Emory Merryman" ORGANIZATION="organization" REPOSITORY="repository"
-RUN dnf update --assumeyes && dnf install --assumeyes emacs bash-completion git && dnf update --assumeyes && dnf clean all && mkdir /var/workspace && chown ${LUSER}:${LUSER} /var/workspace
+RUN dnf update --assumeyes && dnf install --assumeyes emacs* bash-completion git && dnf update --assumeyes && dnf clean all && mkdir /var/workspace && chown ${LUSER}:${LUSER} /var/workspace
 VOLUME /var/workspace
 USER ${LUSER}
 RUN mkdir /home/${LUSER}/.ssh && chmod 0700 /home/${LUSER}/.ssh && echo -e "Host github.com\nUser git\nStrictHostKeyChecking no" > /home/${LUSER}/.ssh/config && chmod 0600 /home/${LUSER}/.ssh/config 
